@@ -1,16 +1,11 @@
 import  React, { Component } from 'react';
 import {ScrollView, Text, View, StyleSheet,TouchableOpacity,Animated} from 'react-native';
-// import Constants from 'expo-constants';
 
-// You can import from local files
-// import AssetExample from './components/AssetExample';
-
-// or any pure javascript modules available in npm
 import { Card,Button,List, Paragraph } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Col, Row, Grid } from "react-native-easy-grid";
-// export default function App() {
+
   
 class Home extends Component {
  
@@ -108,27 +103,17 @@ initViews=()=>{
         </Card>
     );
   })
-// this.setState({
-//   item_views:list_items
-// })
-// console.log(this.state.item_views)
-// return (list_items)
+
 
 }
 
   render() {
     const boxStyle = {
-      // top: this.state.animation,
-      // marginLeft: this.state.animation,
-      // left: this.state.animation,
       height: this.state.animation,
     };
   return (
     <View style={styles.container}>
-          {/* <Appbar.Header>
-        <Appbar.BackAction  color="#fff" />
-        <Appbar.Content title="Sign up" color="#fff" />
-      </Appbar.Header> */}
+        
         {this.state.snack ? 
         <View  >
           <Animated.View style={[styles.box, boxStyle]}>
@@ -177,18 +162,11 @@ style={{marginTop:"auto",marginBottom:"auto"}}
         Tatal funds
       </Text>
       
-     
-      {/* <Card style={styles.appCard1}  style={{
-        position: 'absolute', top: 12, left: 12, right: 12, bottom: 0, justifyContent: 'center', alignItems: 'center'
-   ,backgroundColor:"red",height:"15%",borderRadius:7,
-  }}>
-
-</Card> */}
+    
       <Card style={styles.appCard}>
           <Card.Content>  
           <Text style={styles.paragraph}>
        Your Goals</Text>
-       {/* {this.state.item_views} */}
        
    
        <ScrollView style={styles.scrollView}  persistentScrollbar={true}>
@@ -203,11 +181,8 @@ style={{marginTop:"auto",marginBottom:"auto"}}
      }}
                        onPress={() => this.snack_open()}
                        >
-                      {/* onPress={() =>this.tuma()}> */}
-                        {/* onPress={this.tuma()}> */}
                             <Text>Show snackbar</Text>
                           </Button>
-        {/* <AssetExample /> */}
        </Card.Content>
       </Card>
     </View>
@@ -219,7 +194,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // paddingTop: Constants.statusBarHeight,
     backgroundColor: '#4a5d80',
     paddingTop:44,
     padding: 0,
@@ -229,13 +203,6 @@ const styles = StyleSheet.create({
        ,backgroundColor:"red",height:1,borderRadius:7, zIndex: 2,
       //  width:1
 
-    // height: 100,
-    // width:"100%",
-    // position: "absolute",
-    // // marginLeft:-50,
-    // left: 0,
-    // top: 20,
-    // backgroundColor: "tomato",
   },
   header1:{
     color:"white",
@@ -264,8 +231,6 @@ const styles = StyleSheet.create({
     // fontSize:22,
   },
   appCard1:{
-    // borderWidth: 1,
-    // borderColor: "#999",
     hadowOffset: {
       width: 0,
       height: 1,
@@ -281,6 +246,7 @@ const styles = StyleSheet.create({
     height:"80%",
     width:"100%",
     borderRadius:20,
+    backgroundColor:"#f8f9ff"
 
 },
   paragraph: {
@@ -292,9 +258,9 @@ const styles = StyleSheet.create({
   },
   
   scrollView: {
-    padding: 15,
-    backgroundColor: '#efefef',
-    marginHorizontal: 2,
+    padding: 5,
+    backgroundColor: '#f8f9ff',
+    // marginHorizontal: 2,
     height:"50%"
     
   },
