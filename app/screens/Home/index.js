@@ -84,11 +84,11 @@ initViews=()=>{
             </Text>
             </Col>
            <Col size={7}>
-           <View mode="contained"style={{ backgroundColor:"#03e16f",
-     borderRadius:20,marginRight:22,
-     }}
-                       >
-                            <Text style={{fontSize:14,color:"#fff",textAlign:"center",padding:7}}>Finish Goal</Text>
+           <View style={{ backgroundColor:"#03e16f",
+     borderRadius:10,marginRight:22,
+     }}>
+                            <Text style={{fontSize:14,color:"#fff",textAlign:"center",paddingTop:7,
+                          paddingBottom:7,paddingLeft:3,paddingRight:3,}}>Finish Goal</Text>
                           </View></Col>
             <Col size={1}>
             <View style={styles.verticleLine}></View>
@@ -181,7 +181,7 @@ style={{marginTop:"auto",marginBottom:"auto"}}
      }}
                        onPress={() => this.snack_open()}
                        >
-                            <Text>Show snackbar</Text>
+                            <Text style={{textTransform: 'capitalize'}}>Show snackbar</Text>
                           </Button>
        </Card.Content>
       </Card>
