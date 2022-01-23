@@ -1,5 +1,5 @@
 import  React, { Component } from 'react';
-import {ScrollView, Text, View, StyleSheet,TouchableOpacity } from 'react-native';
+import {ScrollView, Text, View, StyleSheet,TouchableOpacity,Animated} from 'react-native';
 // import Constants from 'expo-constants';
 
 // You can import from local files
@@ -18,10 +18,11 @@ class Home extends Component {
     super(props);
     this.state = {
        item_views: [],
-       info:"",
+       animation: new Animated.Value(0),
+       info:"This is an in-app notification snackbar to show to the user when they perform an action.Clicking it should change the text.",
        info1:"This is an in-app notification snackbar to show to the user when they perform an action.Clicking it should change the text.",
        info2:"User clicked snackbar",
-       snack:false,
+       snack:true,
        data:[{goal:"Goal 1", amount:"12,000"},{goal:"Goal 2", amount:"12,000"}]
     };
   }
@@ -34,18 +35,41 @@ class Home extends Component {
       snack:true,
       info:this.state.info1
     })
-    setTimeout(()=>{this.setState({snack: false})}, 10000)
+    this.animate_snack()
+    setTimeout(()=>{
+      // this.setState({snack: false})
+      
+    this.animate_snack1()
+      
+    }, 10000)
 
   }
   snack_close=()=>{
+    this.animate_snack1()
     this.setState({
-      snack:false
+      // snack:false
     })
+    
   }
   snack_changeText=()=>{
     this.setState({
       info:this.state.info2
     })
+  }
+
+  
+  animate_snack=()=>{
+    Animated.timing(this.state.animation, {
+      toValue: 120,
+      duration: 1000,
+    }).start();
+  }
+  
+  animate_snack1=()=>{
+    Animated.timing(this.state.animation, {
+      toValue: 0,
+      duration: 1000,
+    }).start();
   }
 initViews=()=>{
   let list_items=[]
@@ -64,7 +88,7 @@ initViews=()=>{
               {item.amount}
             </Text>
             </Col>
-           <Col size={5}>
+           <Col size={7}>
            <View mode="contained"style={{ backgroundColor:"#03e16f",
      borderRadius:20,marginRight:22,
      }}
@@ -74,7 +98,7 @@ initViews=()=>{
             <Col size={1}>
             <View style={styles.verticleLine}></View>
             </Col>
-            <Col size={1}>
+            <Col size={2}>
             <Icon name="right" size={30} color="#000" />
             </Col>
           </Row>
@@ -93,40 +117,33 @@ initViews=()=>{
 }
 
   render() {
+    const boxStyle = {
+      // top: this.state.animation,
+      // marginLeft: this.state.animation,
+      // left: this.state.animation,
+      height: this.state.animation,
+    };
   return (
     <View style={styles.container}>
           {/* <Appbar.Header>
         <Appbar.BackAction  color="#fff" />
         <Appbar.Content title="Sign up" color="#fff" />
       </Appbar.Header> */}
-        
-     <Paragraph style={styles.header1}>
-        Afternoon  <Text style={{fontWeight:"bold"}}>JO</Text>
-      </Paragraph>
-     <Text style={styles.header2}>
-        Here's the latest
-      </Text>
-     <Text style={styles.header3}>
-        KES 42,000
-      </Text>
-     <Text style={styles.header4}>
-        Tatal funds
-      </Text>
-      {this.state.snack ? 
-       <View style={{ position: 'absolute', top: 12, left: 12, right: 12, bottom: 0
-       ,backgroundColor:"red",height:"13%",borderRadius:7,}}>
-               
-          <Grid>
-                <Row>
+        {this.state.snack ? 
+        <View  >
+          <Animated.View style={[styles.box, boxStyle]}>
+          <Grid style={{ zIndex: 3}} >
+                <Row style={{ zIndex: 3}}>
               
-                <Col size={7}>
+                <Col size={7} style={{ zIndex: 3}}>
                 <TouchableOpacity
+                style={{ zIndex: 4}}
           onPress={() => {
             this.snack_changeText();
           }}>
-                <Text style={{color:"white",fontSize:16,padding:17}}>
-                  {this.state.info}
-                </Text>
+                <Paragraph style={{color:"white",fontSize:16,padding:17, zIndex: 3}}>
+                  {this.state.info} 
+                </Paragraph>
                 
 </TouchableOpacity>
                 </Col>
@@ -144,9 +161,22 @@ style={{marginTop:"auto",marginBottom:"auto"}}
                
               </Row>
             </Grid>
-          </View> :
-          (<></>)
-      }
+          </Animated.View>
+        </View> :
+          (<></>)}
+     <Paragraph style={styles.header1}>
+        Afternoon  <Text style={{fontWeight:"bold"}}>JO</Text>
+      </Paragraph>
+     <Text style={styles.header2}>
+        Here's the latest
+      </Text>
+     <Text style={styles.header3}>
+        KES 42,000
+      </Text>
+     <Text style={styles.header4}>
+        Tatal funds
+      </Text>
+      
      
       {/* <Card style={styles.appCard1}  style={{
         position: 'absolute', top: 12, left: 12, right: 12, bottom: 0, justifyContent: 'center', alignItems: 'center'
@@ -193,6 +223,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#4a5d80',
     paddingTop:44,
     padding: 0,
+  },
+  box: {
+    position: 'absolute', top: 12, left: 12, right: 12, bottom: 0
+       ,backgroundColor:"red",height:1,borderRadius:7, zIndex: 2,
+      //  width:1
+
+    // height: 100,
+    // width:"100%",
+    // position: "absolute",
+    // // marginLeft:-50,
+    // left: 0,
+    // top: 20,
+    // backgroundColor: "tomato",
   },
   header1:{
     color:"white",
