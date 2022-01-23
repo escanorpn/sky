@@ -8,6 +8,7 @@ import {ScrollView, Text, View, StyleSheet, } from 'react-native';
 // or any pure javascript modules available in npm
 import { Card,Button,List } from 'react-native-paper';
 
+import Icon from 'react-native-vector-icons/AntDesign';
 import { Col, Row, Grid } from "react-native-easy-grid";
 // export default function App() {
   
@@ -34,7 +35,7 @@ initViews=()=>{
       <Card.Content> 
         <Grid>
             <Row>
-            <Col size={3}>
+            <Col size={11}>
             <Text style={{color:"black"}}>
               {item.goal}
             </Text>
@@ -44,8 +45,10 @@ initViews=()=>{
             </Col>
            
             <Col size={1}>
-
             <View style={styles.verticleLine}></View>
+            </Col>
+            <Col size={1}>
+            <Icon name="right" size={30} color="#000" />
             </Col>
           </Row>
         </Grid>
@@ -69,7 +72,7 @@ initViews=()=>{
         <Appbar.BackAction  color="#fff" />
         <Appbar.Content title="Sign up" color="#fff" />
       </Appbar.Header> */}
-     
+        
      <Text style={styles.header1}>
         Afternoon JO
       </Text>
@@ -82,6 +85,24 @@ initViews=()=>{
      <Text style={styles.header4}>
         Tatal funds
       </Text>
+      <View style={{ position: 'absolute', top: 12, left: 12, right: 12, bottom: 0, justifyContent: 'center', alignItems: 'center'
+   ,backgroundColor:"green",height:"15%",borderRadius:7,}}>
+           
+      <Grid>
+            <Row>
+            <Col size={11}>
+            <Text style={{color:"black"}}>
+              item.goal
+            </Text>
+            </Col>
+           
+            <Col size={1}>
+            <Icon name="right" size={30} color="#000" />
+            </Col>
+          </Row>
+        </Grid>
+      </View>
+      
       <Card style={styles.appCard}>
           <Card.Content>  
           <Text style={styles.paragraph}>
@@ -94,14 +115,17 @@ initViews=()=>{
            {this.initViews()}  
             </List.Section>
                                 
-     <Button mode="contained"style={{ width: "4",marginTop: 30,marginBottom: 30,width: "50%",marginLeft:"auto",marginRight:"auto"}}
+  
+            </ScrollView>
+            <Button mode="contained"style={{ marginTop: 30,marginBottom: 30,width: "90%",marginLeft:"auto",marginRight:"auto", backgroundColor:"green",
+     padding:10,borderRadius:20,
+     }}
                        onPress={() => this.send_d()}
                        >
                       {/* onPress={() =>this.tuma()}> */}
                         {/* onPress={this.tuma()}> */}
-                            Submit
+                            <Text>Show snackbar</Text>
                           </Button>
-            </ScrollView>
         {/* <AssetExample /> */}
        </Card.Content>
       </Card>
@@ -115,12 +139,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     // paddingTop: Constants.statusBarHeight,
-    // backgroundColor: 'blue',
+    backgroundColor: 'blue',
     padding: 0,
   },
   header1:{
     color:"white",
-    marginTop:233,
+    // marginTop:233,
     paddingLeft:22,
     fontSize:22,
   },
@@ -157,16 +181,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   appCard: {
-    marginBottom: 5,
-    height:"100%",
+    marginBottom: 0,
+    height:"80%",
     width:"100%",
+    borderRadius:20,
 
 },
   paragraph: {
     margin: 24,
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'left',
     color:"#000"
   },
   
@@ -174,11 +199,13 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: '#efefef',
     marginHorizontal: 2,
-    height:"70%"
+    height:"50%"
     
   },
   verticleLine: {
     height: '100%',
+    // marginTop:"-52%",
+    // marginBottom:"-52%",
 
     
   
