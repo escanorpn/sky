@@ -86,7 +86,7 @@ initViews=()=>{
         Tatal funds
       </Text>
       <View style={{ position: 'absolute', top: 12, left: 12, right: 12, bottom: 0, justifyContent: 'center', alignItems: 'center'
-   ,backgroundColor:"green",height:"15%",borderRadius:7,}}>
+   ,backgroundColor:"red",height:"15%",borderRadius:7,}}>
            
       <Grid>
             <Row>
@@ -102,7 +102,12 @@ initViews=()=>{
           </Row>
         </Grid>
       </View>
-      
+      <Card style={styles.appCard1}  style={{
+        position: 'absolute', top: 12, left: 12, right: 12, bottom: 0, justifyContent: 'center', alignItems: 'center'
+   ,backgroundColor:"red",height:"15%",borderRadius:7,
+  }}>
+
+</Card>
       <Card style={styles.appCard}>
           <Card.Content>  
           <Text style={styles.paragraph}>
