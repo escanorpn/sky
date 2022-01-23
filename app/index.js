@@ -11,7 +11,7 @@
  import { StatusBar } from "react-native";
  import { createAppContainer, createSwitchNavigator } from "react-navigation";
  import { configureFonts, DefaultTheme, Provider as PaperProvider } from "react-native-paper";
- import { fromRight } from "react-navigation-transitions";
+//  import { fromRight } from "react-navigation-transitions";
  
  import { SECONDARY_COLOR, PRIMARY_COLOR } from "./app.config";
  
@@ -59,7 +59,7 @@
      headerMode: "none",
      backBehavior: "initialRoute",
      gesturesEnabled: true,
-     transitionConfig: () => fromRight(600),
+    //  transitionConfig: () => fromRight(600),
    }
  );
  
